@@ -13,6 +13,4 @@ void _tmain(){
     s.show(v);
 
     s.show(v);
-
-    s.show(v);
 }
