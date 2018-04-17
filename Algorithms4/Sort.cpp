@@ -11,4 +11,6 @@ void _tmain(){
     s.show(v);
     s.sort(v);
     s.show(v);
+
+    s.show(v);
 }
