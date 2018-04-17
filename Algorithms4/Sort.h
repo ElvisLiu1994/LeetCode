@@ -119,8 +119,34 @@ private:
 };
 
 template<class T>
-class QuickSort : Sort<T>{
+class QuickSort : public Sort<T>{
+public:
+    void sort(std::vector<T>& a){
+        sort(a, 0, a.size()-1);
+    }
 
+private:
+    void sort(std::vector<T>& a, int lo, int hi){
+        if(hi <= lo) return;
+        int j = partition(a, lo, hi);
+        sort(a, lo, j-1);
+        sort(a, j+1, hi);
+    }
+
+    int partition(std::vector<T>& a, int lo, int hi){
+        int i = lo, j = hi+1;
+        T v = a[lo];
+
+        while(true){
+            while(this->less(a[++i], v)) if(i == hi) break;
+            while(this->less(v, a[--j])) if(j == lo) break;
+            if(i >= j) break;
+            this->exch(a, i, j);
+        }
+
+        this->exch(a, lo, j);
+        return j;
+    }
 };
 
 

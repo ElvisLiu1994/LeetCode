@@ -7,7 +7,7 @@
 
 void _tmain(){
     std::vector<int> v = {1,3,2,5,4};
-    Merge<int> s;
+    QuickSort<int> s;
     s.show(v);
     s.sort(v);
     s.show(v);
