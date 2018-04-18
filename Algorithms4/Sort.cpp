@@ -5,7 +5,7 @@
 #include "Sort.h"
 
 
-void _tmain(){
+void _main(){
     std::vector<int> v = {1,3,2,5,4};
     QuickSort<int> s;
     s.show(v);

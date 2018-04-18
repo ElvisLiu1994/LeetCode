@@ -6,6 +6,6 @@
 extern void _tmain();
 
 int main(){
-
+    _tmain();
 }
 
