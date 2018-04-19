@@ -29,21 +29,7 @@ int lengthOfLongestSubstring(string s) {
     return maxLen;
 }
 
-int lols(string s){
-    unordered_map<char, int> hash;
-    int maxLen = 0, start = 0;
-    for(int i = 0; i < s.length(); i++){
-        hash[s[i]]++;
-        while(hash[s[i]] > 1){
-            hash[s[start]]--;
-            start++;
-        }
-        maxLen = max(maxLen, i-start+1);
-    }
-    return maxLen;
-}
-
-void _tmain(){
-    string s("pwwkew");
-    cout << lengthOfLongestSubstring(s) << endl;
-}
+//void _tmain(){
+//    string s("pwwkew");
+//    cout << lengthOfLongestSubstring(s) << endl;
+//}
