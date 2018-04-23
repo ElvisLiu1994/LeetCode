@@ -7,6 +7,6 @@ extern void _tmain();
 extern void list_main();
 
 int main(){
-    list_main();
+    _tmain();
 }
 

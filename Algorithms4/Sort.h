@@ -84,7 +84,7 @@ public:
 };
 
 template<class T>
-class Merge : public Sort<T>{
+class Merge : public Sort<T>{ // NlgN
 public:
     void sort(std::vector<T> &a){
         aux.resize(a.size());
@@ -119,7 +119,7 @@ private:
 };
 
 template<class T>
-class QuickSort : public Sort<T>{
+class QuickSort : public Sort<T>{ // NlgN
 public:
     void sort(std::vector<T>& a){
         sort(a, 0, a.size()-1);
@@ -146,6 +146,38 @@ private:
 
         this->exch(a, lo, j);
         return j;
+    }
+};
+
+template <class T>
+class HeapSort : public Sort<T>{ // 升序使用大顶堆（因为每次可以将最大的数与最后一个叶子结点交换，然后堆调整，相当于最大的放在最后） 降序小顶堆
+public:
+    void sort(std::vector<T>& a){ // 如果以1开始的话，2k和2k+1是子结点，如果以0开始的话，2k+1和2k+2是子结点
+        int N = a.size();
+        for(int k = N/2 - 1; k >= 0; k--) // 从最后一个非叶子结点开始，从右往左进行调整
+            sink(a, k, N);
+        while(N > 1){
+            this->exch(a, 0, --N);
+            sink(a, 0, N);
+        }
+    }
+
+private:
+    void swim(std::vector<T>& a, int k){
+        while(k > 0 && this->less(a[k-1/2], a[k])){
+            this->exch(a, (k-1)/2, k);
+            k = (k-1)/2;
+        }
+    }
+
+    void sink(std::vector<T>& a, int k, int N){ //这里需要N这个参数，表示只对前N个进行调整，a后面的都已经排好序了
+        while(2*k+1 < N){
+            int j = 2*k+1;
+            if(j+1 < N && this->less(a[j], a[j+1])) j++;
+            if(!this->less(a[k],a[j])) break;
+            this->exch(a, k, j);
+            k = j;
+        }
     }
 };
 
