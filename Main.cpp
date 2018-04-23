@@ -4,8 +4,9 @@
 #include "add.h"
 
 extern void _tmain();
+extern void list_main();
 
 int main(){
-    _tmain();
+    list_main();
 }
 
