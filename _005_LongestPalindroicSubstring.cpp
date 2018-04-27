@@ -43,7 +43,7 @@ string longestPalindrome(string s) {
     return s.substr(lo, lo+maxLen);
 }
 
-void _tmain(){
-    string s = "abba";
-    cout << longestPalindrome(s) << endl;
-}
+//void _tmain(){
+//    string s = "abba";
+//    cout << longestPalindrome(s) << endl;
+//}
