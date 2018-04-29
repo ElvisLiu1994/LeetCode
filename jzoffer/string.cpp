@@ -41,3 +41,4 @@ void ReplaceBlank(char string[], int length){
         --indexOfOriginal;
     }
 }
+
