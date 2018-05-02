@@ -4,6 +4,8 @@
 
 #include "../add.h"
 
+bool matchCore(const char* str, const char* pattern);
+
 /***************************************************************************/
 
 // 往链表尾部插入一个结点，注意有可能一开始该链表是个空链表
@@ -100,46 +102,37 @@ void DeleteNode(ListNode** pListHead, ListNode* pToBeDeleted){
 
 /***************************************************************************/
 
-// 面试题19：正则表达式匹配
-// 题目：请实现一个函数用来匹配包含'.'和'*'的正则表达式。模式中的字符'.'
-// 表示任意一个字符，而'*'表示它前面的字符可以出现任意次（含0次）。在本题
-// 中，匹配是指字符串的所有字符匹配整个模式。例如，字符串"aaa"与模式"a.a"
-// 和"ab*ac*a"匹配，但与"aa.a"及"ab*a"均不匹配。
+// 面试题22：链表中倒数第k个结点
+// 题目：输入一个链表，输出该链表中倒数第k个结点。为了符合大多数人的习惯，
+// 本题从1开始计数，即链表的尾结点是倒数第1个结点。例如一个链表有6个结点，
+// 从头结点开始它们的值依次是1、2、3、4、5、6。这个链表的倒数第3个结点是
+// 值为4的结点。
 
-bool matchCore(const char* str, const char* pattern);
+ListNode* FindKthToTail(ListNode* pListHead, unsigned int k){
+    if(pListHead == nullptr || k == 0)
+        return nullptr;
 
-bool match(const char* str, const char* pattern)
-{
-    if(str == nullptr || pattern == nullptr)
-        return false;
+    ListNode *pAhead = pListHead;
+    ListNode *pBehind = nullptr;
 
-    return matchCore(str, pattern);
-}
-
-bool matchCore(const char* str, const char* pattern){
-
-    if(*str == '\0' && *pattern == '\0')
-        return true;
-
-    if(*str != '\0' && *pattern == '\0')
-        return false;
-
-    if(*(pattern + 1) == '*'){
-        if(*pattern == *str || (*pattern == '.' && *str != '\0'))
-            return matchCore(str+1, pattern+2) || matchCore(str+1, pattern) || matchCore(str, pattern+2);
+    for(int i = 0; i < k-1; i++){
+        if(pAhead->next != nullptr)
+            pAhead = pAhead->next;
         else
-            return matchCore(str, pattern+2);
+            return nullptr;
     }
 
-    if(*str == *pattern || (*pattern == '.' && *str != '\0'))
-        return matchCore(str+1, pattern+1);
+    pBehind = pListHead;
+    while(pAhead->next != nullptr){
+        pAhead = pAhead->next;
+        pBehind = pBehind->next;
+    }
 
-    return false;
+    return pBehind;
 }
+
 /***************************************************************************/
 
 void list_main(){
-    char* str = "aaa";
-    char* pattern = "aaaa";
-    cout << match(str, pattern) << endl;
+
 }
