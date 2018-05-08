@@ -1,7 +1,7 @@
 //
 // Created by 刘敬 on 18/3/28.
 //
-
+bool matchCore(const char* str, const char* pattern);
 bool scanUnsignedInteger(const char** str);
 bool scanInteger(const char** str);
 
