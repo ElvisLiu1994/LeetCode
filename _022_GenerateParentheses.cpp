@@ -38,10 +38,10 @@ void solver(vector<string> &res, string cur, int l, int r, int n){
         solver(res, cur+')', l, r+1, n);
 }
 
-void _tmain(){
-    vector<string> res = generateParenthesis(3);
-
-    for(string s : res){
-        cout << s << endl;
-    }
-}
+//void _tmain(){
+//    vector<string> res = generateParenthesis(3);
+//
+//    for(string s : res){
+//        cout << s << endl;
+//    }
+//}
