@@ -11,12 +11,13 @@
 #include <cstdio>
 #include <algorithm>
 #include <iostream>
+#include <climits>
+#include <cmath>
 
 using namespace std;
 
-extern void _tmain();
-
 int main() {
-    _tmain();
+
+
 }
 
